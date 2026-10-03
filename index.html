@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Maths Plus - Official Typing Speed & Accuracy Test</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-dark: #0f172a;
+      --accent: #2563eb;
+      --gold: #d97706;
+      --danger: #dc2626;
+      --success: #16a34a;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --border: #cbd5e1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header & Branding */
+    header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      color: #ffffff;
+      padding: 1rem 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-badge {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 3px solid #f59e0b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1.25rem;
+      color: #1e3a8a;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .brand-titles h1 {
+      font-size: 1.4rem;
+      letter-spacing: 0.5px;
+      color: #ffffff;
+    }
+
+    .brand-titles p {
+      font-size: 0.85rem;
+      color: #93c5fd;
+    }
+
+    .contact-info {
+      text-align: right;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      background: rgba(255,255,255,0.08);
+      padding: 0.5rem 0.9rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .contact-info strong {
+      color: #fde047;
+    }
+
+    /* Main Container */
+    main {
+      flex: 1;
+      max-width: 1200px;
+      width: 100%;
+      margin: 1.5rem auto;
+      padding: 0 1rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Registration Screen */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    .form-group input, .form-group select {
+      padding: 0.75rem;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus, .form-group select:focus {
+      border-color: var(--accent);
+    }
+
+    .rules-box {
+      margin-top: 1.5rem;
+      background: #eff6ff;
+      border-left: 4px solid var(--accent);
+      padding: 1rem;
+      border-radius: 4px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .rules-box h3 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .rules-box ul {
+      margin-left: 1.25rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.75rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: #172554;
+    }
+
+    .btn-danger {
+      background: var(--danger);
+      color: #ffffff;
+    }
+
+    /* Test Arena */
+    .test-header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid #e2e8f0;
+      margin-bottom: 1rem;
+    }
+
+    .timer-badge {
+      background: #fee2e2;
+      color: var(--danger);
+      border: 1.5px solid #fca5a5;
+      font-size: 1.35rem;
+      font-weight: 700;
+      padding: 0.4rem 1rem;
+      border-radius: 8px;
+    }
+
+    .candidate-badge {
+      font-size: 0.95rem;
+      color: #475569;
+    }
+
+    /* Original Passage Box - Strict Examination View (No Highlight, No Auto Scroll) */
+    .passage-viewer {
+      height: 170px;
+      overflow-y: scroll;
+      padding: 1rem;
+      background: #f1f5f9;
+      border: 2px solid #cbd5e1;
+      border-radius: 6px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #0f172a;
+      white-space: pre-wrap;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    /* Typing Area */
+    .typing-box {
+      margin-top: 1rem;
+      width: 100%;
+      height: 200px;
+      padding: 1rem;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      border: 2px solid #94a3b8;
+      border-radius: 6px;
+      outline: none;
+      resize: vertical;
+      color: #0f172a;
+    }
+
+    .typing-box:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+    }
+
+    /* Live Counters */
+    .counter-bar {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-top: 0.75rem;
+      font-size: 0.88rem;
+      color: #64748b;
+    }
+
+    /* Results Card */
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .metric-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .metric-value {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-top: 0.3rem;
+    }
+
+    .metric-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #64748b;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 0.6rem 1.5rem;
+      font-size: 1.25rem;
+      font-weight: 800;
+      border-radius: 30px;
+      margin-top: 0.5rem;
+    }
+
+    .status-qualified {
+      background: #dcfce7;
+      color: var(--success);
+      border: 2px solid #86efac;
+    }
+
+    .status-disqualified {
+      background: #fee2e2;
+      color: var(--danger);
+      border: 2px solid #fca5a5;
+    }
+
+    /* Leaderboard */
+    .leaderboard-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .leaderboard-table th, .leaderboard-table td {
+      border: 1px solid #e2e8f0;
+      padding: 0.65rem 0.85rem;
+      text-align: left;
+    }
+
+    .leaderboard-table th {
+      background: #f1f5f9;
+      color: #334155;
+      font-weight: 600;
+    }
+
+    .leaderboard-table tr:nth-child(even) {
+      background: #f8fafc;
+    }
+
+    footer {
+      background: #0f172a;
+      color: #94a3b8;
+      text-align: center;
+      padding: 1.25rem;
+      font-size: 0.85rem;
+      margin-top: auto;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .header-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .brand-group {
+        flex-direction: column;
+      }
+      .contact-info {
+        text-align: center;
+        width: 100%;
+      }
+      .test-header-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .timer-badge {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header with Career Maths Plus Branding -->
+  <header>
+    <div class="header-container">
+      <div class="brand-group">
+        <div class="logo-badge">CMP</div>
+        <div class="brand-titles">
+          <h1>Career Maths Plus</h1>
+          <p>Educator: Sanket Chowdhury | Official Typing Assessment Portal</p>
+        </div>
+      </div>
+      <div class="contact-info">
+        <div><strong>Offline Batch:</strong> Chakdaha, Nadia (Math &amp; Reasoning)</div>
+        <div><strong>Call / WhatsApp:</strong> 8001514969</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Screen 1: Registration Form -->
+    <section id="registrationSection" class="card">
+      <h2 style="color: var(--primary); margin-bottom: 0.5rem;">Candidate Information &amp; Verification</h2>
+      <p style="font-size: 0.9rem; color: #64748b;">Enter your details carefully. This assessment strictly follows official evaluation rules.</p>
+      
+      <form id="candidateForm" onsubmit="handleStartTest(event)">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="cName">Candidate Full Name *</label>
+            <input type="text" id="cName" required placeholder="Enter candidate name">
+          </div>
+          <div class="form-group">
+            <label for="cPhone">WhatsApp / Mobile Number *</label>
+            <input type="tel" id="cPhone" pattern="[0-9]{10}" required placeholder="10-digit mobile number">
+          </div>
+          <div class="form-group">
+            <label for="cCategory">Category *</label>
+            <select id="cCategory" required>
+              <option value="">-- Select Category --</option>
+              <option value="General">General / UR</option>
+              <option value="OBC">OBC</option>
+              <option value="SC">SC</option>
+              <option value="ST">ST</option>
+              <option value="PWD-Blind">Blind / Low Vision / LDCP</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="rules-box">
+          <h3>Official Typing Test Instructions:</h3>
+          <ul>
+            <li><strong>Calculation Rule:</strong> 5 Key Depressions = 1 Word typed.</li>
+            <li><strong>Minimum Words Required (10 Minutes):</strong>
+              <ul>
+                <li>General / OBC / SC / ST: Minimum 200 words.</li>
+                <li>Blind / Low Vision / LDCP: Minimum 120 words.</li>
+              </ul>
+            </li>
+            <li><strong>Qualifying Cut-off Marks (English):</strong>
+              <ul>
+                <li>General / OBC / SC / ST: Minimum 140 Marks.</li>
+                <li>Blind / Low Vision / LDCP: Minimum 84 Marks.</li>
+              </ul>
+            </li>
+            <li><strong>Marks Calculation Formula:</strong><br>
+              <code>Marks = No. of Typed Words - (0.33 &times; Major Mistakes) - (0.15 &times; Minor Mistakes)</code>
+            </li>
+            <li><strong>Major Mistakes:</strong> Omission of words, foreign words inserted, spelling errors, punctuation inside/adjacent to words.</li>
+            <li><strong>Minor Mistakes:</strong> Omission/incorrect punctuation marks, capital/small letter case mismatches.</li>
+            <li><strong>Interface Rules:</strong> Auto-highlight and auto-scroll are strictly disabled as per real exam conditions.</li>
+          </ul>
+        </div>
+
+        <div style="margin-top: 1.5rem; text-align: center;">
+          <button type="submit" class="btn btn-primary" style="font-size: 1.1rem; padding: 0.9rem 2.5rem;">Start 10-Minute Typing Test</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Screen 2: Test Arena -->
+    <section id="testArenaSection" class="card" style="display: none;">
+      <div class="test-header-bar">
+        <div>
+          <h3 id="displayCandidateName" style="color: var(--primary);">Candidate: </h3>
+          <div class="candidate-badge" id="displayCategoryBadge">Category: </div>
+        </div>
+        <div class="timer-badge" id="timerBox">Time Left: 10:00</div>
+      </div>
+
+      <!-- Passage Display (No Highlight, No Auto Scroll) -->
+      <label style="font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; display: block; color: #334155;">Original Passage Matter:</label>
+      <div id="passageViewer" class="passage-viewer"></div>
+
+      <!-- Typing Area -->
+      <label style="font-weight: 600; font-size: 0.9rem; margin-top: 1rem; margin-bottom: 0.4rem; display: block; color: #334155;">Type Below (Keystrokes will be counted):</label>
+      <textarea 
+        id="typingArea" 
+        class="typing-box" 
+        placeholder="Click here and begin typing when the test starts..." 
+        autocomplete="off" 
+        autocorrect="off" 
+        autocapitalize="off" 
+        spellcheck="false"
+        onpaste="return false;"
+        ondrop="return false;"
+      ></textarea>
+
+      <div class="counter-bar">
+        <span>Keystrokes: <strong id="keystrokeCount">0</strong></span>
+        <span>Calculated Words (Keystrokes &divide; 5): <strong id="wordEquivCount">0.0</strong></span>
+        <span>Real-time Gross WPM: <strong id="grossWpm">0.0</strong></span>
+      </div>
+
+      <div style="margin-top: 1.5rem; text-align: right;">
+        <button id="submitTestBtn" class="btn btn-danger" onclick="finishTest()">Submit Test Early</button>
+      </div>
+    </section>
+
+    <!-- Screen 3: Performance Scorecard & Evaluation -->
+    <section id="resultSection" class="card" style="display: none;">
+      <h2 style="color: var(--primary); text-align: center;">Typing Test Examination Result</h2>
+      <div style="text-align: center; margin-top: 0.5rem;">
+        <div id="qualificationStatus"></div>
+      </div>
+
+      <div class="result-grid">
+        <div class="metric-card">
+          <div class="metric-label">Key Depressions</div>
+          <div class="metric-value" id="resKeyDepressions">0</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Typed Words (Keys &divide; 5)</div>
+          <div class="metric-value" id="resTypedWords">0.0</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Gross Speed</div>
+          <div class="metric-value" id="resGrossWpm">0 WPM</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Major Mistakes</div>
+          <div class="metric-value" id="resMajorMistakes" style="color: var(--danger);">0</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Minor Mistakes</div>
+          <div class="metric-value" id="resMinorMistakes" style="color: var(--gold);">0</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Final Marks Obtained</div>
+          <div class="metric-value" id="resFinalMarks">0.00</div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <button class="btn btn-primary" onclick="restartTest()">Attempt Again</button>
+      </div>
+    </section>
+
+    <!-- Leaderboard Section (Permanent & Non-Erasable by Candidates) -->
+    <section class="card">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+        <div>
+          <h2 style="color: var(--primary);">Exam Merit &amp; Leaderboard</h2>
+          <p style="font-size: 0.85rem; color: #64748b;">Permanent candidate ranking log.</p>
+        </div>
+        <span style="font-size: 0.8rem; background: #e0f2fe; color: #0369a1; padding: 0.3rem 0.75rem; border-radius: 4px; font-weight: 600;">Tamper Protected</span>
+      </div>
+
+      <div style="overflow-x: auto;">
+        <table class="leaderboard-table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Candidate Name</th>
+              <th>Category</th>
+              <th>Keystrokes</th>
+              <th>Words</th>
+              <th>Major/Minor</th>
+              <th>Marks</th>
+              <th>Result</th>
+              <th>Date &amp; Time</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboardBody">
+            <tr><td colspan="9" style="text-align: center; color: #94a3b8;">No test records yet. Be the first to take the test!</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Career Maths Plus &bull; Sanket Chowdhury &bull; Chakdaha, Nadia, West Bengal &bull; Contact: 8001514969</p>
+  </footer>
+
+  <script>
+    // Exact Test Passage
+    const ORIGINAL_PASSAGE = `A calm morning walk brings true peace & fresh joy to our busy minds! Sunlight filters softly through green leaves, while sweet birds sing #morning tunes from tall pine trees. Taking slow, deep breaths helps you reset: feel the cool air enter your lungs & release all inner doubt. Good daily habits—like drinking pure water, reading daily books, & stretching stiff joints—shape a healthy, happy life. When we plan our tasks carefully, we accomplish goals easily & stay smiling @work. Always remember to stay kind; simple words like "thank you," "hello," & "good job" lift anyone’s mood instantly. Many small steps lead to major success over time, so do not rush your progress! Work with focused attention, rest well each night, & enjoy the quiet moments. Life offers many bright opportunities every day; we only need to look closely & appreciate what surrounds us. Keep your desk tidy, organize files neatly, & take brief screen breaks to relax tired eyes. Eating fresh fruit, walking outdoors, & chatting with true friends will keep your spirits high & steady. Even when things feel hard, maintain hope & move forward with courage! Every single sunrise brings a clean slate & fresh energy to try again. Learn from small mistakes, embrace new lessons, & keep growing stronger each day. Smile often, think positively, & cherish your journey; life is full of wonderful surprises & sweet memories!`;
+
+    // Optional: Paste your Google Apps Script Web App Endpoint here to automatically send results to your Google Sheet
+    const GOOGLE_SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwQFe3548vLJT1iD6NHbFcqrxMkJuvcQWOJRxi24GzWULy1-aexrugLh7xFr0HsZ0Qf5Q/exec"; 
+
+    let candidate = { name: "", phone: "", category: "" };
+    let timerInterval = null;
+    let totalTimeSeconds = 600; // 10 minutes (600s)
+    let remainingTime = 600;
+    let isTestActive = false;
+
+    // Load initial passage
+    document.getElementById('passageViewer').textContent = ORIGINAL_PASSAGE;
+
+    // Render initial leaderboard from secure local storage
+    window.addEventListener('DOMContentLoaded', () => {
+      renderLeaderboard();
+    });
+
+    function handleStartTest(e) {
+      e.preventDefault();
+      candidate.name = document.getElementById('cName').value.trim();
+      candidate.phone = document.getElementById('cPhone').value.trim();
+      candidate.category = document.getElementById('cCategory').value;
+
+      if (!candidate.name || !candidate.phone || !candidate.category) {
+        alert("Please fill out all registration fields.");
+        return;
+      }
+
+      document.getElementById('displayCandidateName').textContent = `Candidate: ${candidate.name}`;
+      document.getElementById('displayCategoryBadge').textContent = `Category: ${candidate.category} | Phone: ${candidate.phone}`;
+
+      document.getElementById('registrationSection').style.display = 'none';
+      document.getElementById('testArenaSection').style.display = 'block';
+      document.getElementById('resultSection').style.display = 'none';
+
+      startTimer();
+    }
+
+    function startTimer() {
+      remainingTime = totalTimeSeconds;
+      isTestActive = true;
+      const timerBox = document.getElementById('timerBox');
+      const typingArea = document.getElementById('typingArea');
+      
+      typingArea.value = '';
+      typingArea.disabled = false;
+      typingArea.focus();
+
+      typingArea.addEventListener('input', handleTypingInput);
+
+      timerInterval = setInterval(() => {
+        remainingTime--;
+        const mins = Math.floor(remainingTime / 60);
+        const secs = remainingTime % 60;
+        timerBox.textContent = `Time Left: ${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
+
+        if (remainingTime <= 0) {
+          clearInterval(timerInterval);
+          finishTest();
+        }
+      }, 1000);
+    }
+
+    function handleTypingInput() {
+      if (!isTestActive) return;
+      const text = document.getElementById('typingArea').value;
+      const keystrokes = text.length;
+      const words = (keystrokes / 5).toFixed(1);
+      
+      const timeElapsedMinutes = (totalTimeSeconds - remainingTime) / 60;
+      const grossWpm = timeElapsedMinutes > 0 ? ((keystrokes / 5) / timeElapsedMinutes).toFixed(1) : 0;
+
+      document.getElementById('keystrokeCount').textContent = keystrokes;
+      document.getElementById('wordEquivCount').textContent = words;
+      document.getElementById('grossWpm').textContent = grossWpm;
+    }
+
+    function finishTest() {
+      if (!isTestActive && remainingTime > 0) return;
+      isTestActive = false;
+      clearInterval(timerInterval);
+
+      const typingArea = document.getElementById('typingArea');
+      typingArea.disabled = true;
+
+      const typedText = typingArea.value;
+      const timeSpentMinutes = Math.max(0.1, (totalTimeSeconds - remainingTime) / 60);
+      
+      evaluateCandidate(typedText, timeSpentMinutes);
+    }
+
+    function evaluateCandidate(typedText, timeSpentMinutes) {
+      const keystrokes = typedText.length;
+      const typedWordCount = keystrokes / 5; // 5 key depression = 1 word
+
+      // Word-by-word analysis against original passage
+      const origWords = ORIGINAL_PASSAGE.trim().split(/\s+/);
+      const typedWords = typedText.trim().length > 0 ? typedText.trim().split(/\s+/) : [];
+
+      let majorMistakes = 0;
+      let minorMistakes = 0;
+
+      const maxLen = Math.max(origWords.length, typedWords.length);
+
+      for (let i = 0; i < maxLen; i++) {
+        const oWord = origWords[i];
+        const tWord = typedWords[i];
+
+        if (tWord === undefined) {
+          // Omission of words -> Major mistake
+          majorMistakes++;
+        } else if (oWord === undefined) {
+          // Insertion of extra/foreign words -> Major mistake
+          majorMistakes++;
+        } else if (oWord === tWord) {
+          // Perfectly matched word
+          continue;
+        } else {
+          // Identify whether mistake is Minor or Major
+          // Strip punctuations to check spelling & case
+          const oClean = oWord.replace(/[^\w\s]/g, "");
+          const tClean = tWord.replace(/[^\w\s]/g, "");
+
+          const oPunc = oWord.replace(/[\w\s]/g, "");
+          const tPunc = tWord.replace(/[\w\s]/g, "");
+
+          if (oClean.toLowerCase() === tClean.toLowerCase()) {
+            // Letters are identical disregarding case & punctuation
+            if (oClean !== tClean) {
+              // Letter typed in small vs capital or vice-versa -> Minor mistake
+              minorMistakes++;
+            }
+            if (oPunc !== tPunc) {
+              // Punctuation omission or incorrect punctuation -> Minor mistake
+              minorMistakes++;
+            }
+          } else {
+            // Spelling mistake or insertion of punctuation inside/beginning/end
+            majorMistakes++;
+          }
+        }
+      }
+
+      // Calculation of Marks for Accuracy:
+      // Marks = No. of Typed Words - (0.33 * Major Mistake) - (0.15 * Minor Mistake)
+      const penalty = (0.33 * majorMistakes) + (0.15 * minorMistakes);
+      const marks = Math.max(0, typedWordCount - penalty);
+
+      // Qualification rules based on image instructions:
+      const isPwd = candidate.category === "PWD-Blind";
+      const wordThreshold = isPwd ? 120 : 200;
+      const qualifyingMarksCutoff = isPwd ? 84 : 140;
+
+      let isQualified = false;
+      let disqualificationReason = "";
+
+      if (typedWordCount < wordThreshold) {
+        disqualificationReason = `Typed words (${typedWordCount.toFixed(1)}) less than minimum cutoff (${wordThreshold} words in 10 mins).`;
+      } else if (marks < qualifyingMarksCutoff) {
+        disqualificationReason = `Marks obtained (${marks.toFixed(2)}) is less than qualifying mark (${qualifyingMarksCutoff}).`;
+      } else {
+        isQualified = true;
+      }
+
+      displayResults({
+        keystrokes,
+        typedWordCount,
+        grossWpm: (typedWordCount / timeSpentMinutes).toFixed(1),
+        majorMistakes,
+        minorMistakes,
+        marks: marks.toFixed(2),
+        isQualified,
+        disqualificationReason
+      });
+    }
+
+    function displayResults(data) {
+      document.getElementById('testArenaSection').style.display = 'none';
+      document.getElementById('resultSection').style.display = 'block';
+
+      document.getElementById('resKeyDepressions').textContent = data.keystrokes;
+      document.getElementById('resTypedWords').textContent = data.typedWordCount.toFixed(1);
+      document.getElementById('resGrossWpm').textContent = `${data.grossWpm} WPM`;
+      document.getElementById('resMajorMistakes').textContent = data.majorMistakes;
+      document.getElementById('resMinorMistakes').textContent = data.minorMistakes;
+      document.getElementById('resFinalMarks').textContent = data.marks;
+
+      const statusBox = document.getElementById('qualificationStatus');
+      if (data.isQualified) {
+        statusBox.innerHTML = `<div class="status-badge status-qualified">&check; QUALIFIED</div>`;
+      } else {
+        statusBox.innerHTML = `
+          <div class="status-badge status-disqualified">&cross; DISQUALIFIED</div>
+          <p style="color: var(--danger); font-size: 0.9rem; margin-top: 0.5rem; font-weight: 600;">${data.disqualificationReason}</p>
+        `;
+      }
+
+      // Record to Indelible Leaderboard
+      const record = {
+        name: candidate.name,
+        phone: candidate.phone,
+        category: candidate.category,
+        keystrokes: data.keystrokes,
+        words: data.typedWordCount.toFixed(1),
+        major: data.majorMistakes,
+        minor: data.minorMistakes,
+        marks: parseFloat(data.marks),
+        status: data.isQualified ? "QUALIFIED" : "DISQUALIFIED",
+        timestamp: new Date().toLocaleString()
+      };
+
+      saveLeaderboardEntry(record);
+      syncToGoogleSheet(record);
+    }
+
+    // Leaderboard logic with persistence and erasure protection
+    function getLeaderboardEntries() {
+      try {
+        const raw = localStorage.getItem('cmp_typing_leaderboard_records');
+        return raw ? JSON.parse(raw) : [];
+      } catch (err) {
+        return [];
+      }
+    }
+
+    function saveLeaderboardEntry(entry) {
+      const records = getLeaderboardEntries();
+      records.push(entry);
+      // Sort in descending order of marks, then speed
+      records.sort((a, b) => b.marks - a.marks || b.words - a.words);
+      localStorage.setItem('cmp_typing_leaderboard_records', JSON.stringify(records));
+      renderLeaderboard();
+    }
+
+    function renderLeaderboard() {
+      const tbody = document.getElementById('leaderboardBody');
+      const records = getLeaderboardEntries();
+
+      if (records.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="9" style="text-align: center; color: #94a3b8;">No test records yet. Be the first to take the test!</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = records.map((r, index) => `
+        <tr>
+          <td><strong>#${index + 1}</strong></td>
+          <td>${escapeHtml(r.name)}</td>
+          <td>${escapeHtml(r.category)}</td>
+          <td>${r.keystrokes}</td>
+          <td>${r.words}</td>
+          <td>Maj: ${r.major} | Min: ${r.minor}</td>
+          <td><strong>${r.marks}</strong></td>
+          <td><span style="font-weight: 700; color: ${r.status === 'QUALIFIED' ? 'var(--success)' : 'var(--danger)'};">${r.status}</span></td>
+          <td style="font-size: 0.8rem; color: #64748b;">${r.timestamp}</td>
+        </tr>
+      `).join('');
+    }
+
+    // Google Sheets Integration Bridge
+    function syncToGoogleSheet(record) {
+      if (!GOOGLE_SHEET_WEBAPP_URL || GOOGLE_SHEET_WEBAPP_URL.trim() === "") {
+        console.info("Google Sheet WebApp URL not set. Data stored locally in secure leaderboard.");
+        return;
+      }
+
+      fetch(GOOGLE_SHEET_WEBAPP_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(record)
+      }).then(() => {
+        console.log("Successfully forwarded result to Google Sheets.");
+      }).catch(err => {
+        console.error("Could not sync with Google Sheets:", err);
+      });
+    }
+
+    function restartTest() {
+      document.getElementById('resultSection').style.display = 'none';
+      document.getElementById('registrationSection').style.display = 'block';
+      document.getElementById('candidateForm').reset();
+    }
+
+    function escapeHtml(str) {
+      return (str || '').replace(/[&<>'"]/g, tag => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        "'": '&#39;',
+        '"': '&quot;'
+      }[tag] || tag));
+    }
+  </script>
+</body>
+</html>
